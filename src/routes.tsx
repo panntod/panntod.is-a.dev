@@ -1,16 +1,22 @@
+import { lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
-import Landing from "./pages/landing";
-import Playground from "./pages/playground";
+const AboutPage = lazy(() => import("./pages/About"));
+const HomePage = lazy(() => import("./pages/Home"));
+const ProjectPage = lazy(() => import("./pages/Project"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />
+    element: <HomePage />
   },
   {
-    path: "/playground",
-    element: <Playground />
+    path: "/about",
+    element: <AboutPage />
+  },
+  {
+    path: "/projects",
+    element: <ProjectPage />
   },
   {
     path: "*",
