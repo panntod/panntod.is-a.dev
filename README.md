@@ -1,6 +1,6 @@
 # 🌐 Personal Website
 
-![https://panntod.is-a.dev/](https://raw.githubusercontent.com/BadEnd777/Personal-Website/main/.github/assets/preview.png)
+![https://panntod.is-a.dev/](https://raw.githubusercontent.com/panntod/Personal-Website/refs/heads/master/public/preview.png)
 
 Welcome to my personal website repository! This site serves as my digital portfolio, showcasing my projects, skills, and other information about me.
 
