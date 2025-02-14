@@ -29,8 +29,8 @@ export const MobileNav = () => {
           ))}
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link to="https://github.com/panntod/Personal-Website" target="_blank" aria-label="GitHub repository">
-              View on GitHub
+            <Link to="https://github.com/panntod/" target="_blank" aria-label="GitHub repository">
+              See My Github
             </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>

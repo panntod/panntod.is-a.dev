@@ -22,6 +22,11 @@ export const projects = [
       {
         text: "View Source",
         link: "https://github.com/panntod/Vite-Starter-Template",
+        icon: "icon-[tabler--link]"
+      },
+      {
+        text: "View Demo",
+        link: "https://vite-starter.pandhuarya.my.id/",
         icon: "icon-[tabler--arrow-right]"
       }
     ],

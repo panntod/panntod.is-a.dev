@@ -15,7 +15,7 @@ export const Contact = () => {
           <p className="text-lg text-muted-foreground">
             Feel free to reach out if you have any questions or just want to say hi!
           </p>
-          <p className="text-lg text-primary font-semibold">I look forward to hearing from you! 😊</p>
+          <p className="text-lg text-primary font-semibold">I look forward to hearing from you!</p>
 
           <Button asChild>
             <a href="https://link.pandhuarya.my.id" target="_blank" rel="noopener noreferrer">

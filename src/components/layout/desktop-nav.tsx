@@ -33,7 +33,7 @@ export const DesktopNav = () => {
       <Separator orientation="vertical" className="h-8" />
       <div className="flex items-center space-x-1">
         <ModeToggle />
-        <Link to="https://github.com/panntod/Personal-Website" target="_blank" aria-label="GitHub repository">
+        <Link to="https://github.com/panntod" target="_blank" aria-label="GitHub repository">
           <Button variant="ghost" size="icon" aria-label="GitHub repository">
             <span className="icon-[tabler--brand-github] size-5" />
           </Button>
