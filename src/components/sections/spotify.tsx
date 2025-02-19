@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Typography } from "../typography";
 
 export interface ISpotify {
   timestamp: number;
-  item: Item;
+  item?: Item; // Bisa undefined kalau tidak ada lagu yang diputar
   is_playing: boolean;
 }
 
 export interface Item {
   album: Album;
   artists: Artist[];
-  external_urls: {
-    spotify: string;
-  };
+  external_urls: { spotify: string };
   duration_ms: number;
   id: string;
   name: string;
@@ -33,35 +31,47 @@ export interface Image {
   url: string;
 }
 
+const API_URL = import.meta.env.VITE_SPOTIFY_API;
+
 export const SpotifyNowPlaying = () => {
   const [nowPlaying, setNowPlaying] = useState({
     artist: "Artist",
     external_url: "#",
     song: "Not Tracked",
-    cover: "https://placehold.co/300x300",
+    cover: "/spotify-logo.png",
     is_playing: false
   });
 
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
     const fetchNowPlaying = async () => {
-      const response = await fetch("/api");
-      const data: ISpotify = await response.json();
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error("Failed to fetch");
 
-      if (data && data.item) {
-        setNowPlaying({
-          artist: data.item.artists.map(artist => artist.name).join(", "),
-          external_url: data.item.external_urls.spotify,
-          song: data.item.name,
-          cover: data.item.album.images[0]?.url || "https://placehold.co/300x300",
-          is_playing: data.is_playing
-        });
+        const data: ISpotify = await response.json();
+
+        if (data.item) {
+          setNowPlaying({
+            artist: data.item.artists.map(artist => artist.name).join(", "),
+            external_url: data.item.external_urls.spotify,
+            song: data.item.name,
+            cover: data.item.album.images[0]?.url || "/spotify-logo.png",
+            is_playing: data.is_playing
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching Spotify data:", error);
       }
     };
 
     fetchNowPlaying();
-    const interval = setInterval(fetchNowPlaying, 10000);
+    intervalRef.current = setInterval(fetchNowPlaying, 5000);
 
-    return () => clearInterval(interval);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   return (
@@ -71,7 +81,7 @@ export const SpotifyNowPlaying = () => {
           src={nowPlaying.cover}
           className="rounded-md object-cover"
           alt="Album Cover"
-          onError={e => (e.currentTarget.src = "https://placehold.co/200x200")}
+          onError={e => (e.currentTarget.src = "/spotify-logo.png")}
         />
       </div>
       <div className="flex flex-col items-center w-[240px]">

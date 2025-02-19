@@ -4,13 +4,14 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
+
+  // Only needed if you want to proxy requests to the API
   server: {
     proxy: {
       "/api": {
-        target: "https://panntod-spotify-readme.vercel.app/api",
+        target: "https://panntod-spotify-readme.vercel.app",
         changeOrigin: true,
-        secure: false,
-        rewrite: path => path.replace(/^\/api/, "")
+        secure: false
       }
     }
   }
