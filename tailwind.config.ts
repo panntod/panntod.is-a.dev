@@ -60,6 +60,10 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)"
       },
       keyframes: {
+        soundwave: {
+          "0%, 100%": { height: "3px" },
+          "50%": { height: "14px" }
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" }
@@ -70,6 +74,7 @@ const config: Config = {
         }
       },
       animation: {
+        soundwave: "soundwave 1s infinite alternate",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out"
       }
