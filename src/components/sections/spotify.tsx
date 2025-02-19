@@ -1,10 +1,11 @@
+import cn from "@/lib/clsx";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Typography } from "../typography";
 
 export interface ISpotify {
   timestamp: number;
-  item?: Item; // Bisa undefined kalau tidak ada lagu yang diputar
+  item?: Item;
   is_playing: boolean;
 }
 
@@ -73,7 +74,14 @@ export const SpotifyNowPlaying = () => {
   }, []);
 
   return (
-    <Link to={nowPlaying.external_url} target="_blank" className="flex justify-around items-center p-2 w-[400px]">
+    <Link
+      to={nowPlaying.external_url}
+      target="_blank"
+      className={cn(
+        "flex items-center p-2 w-[400px]",
+        nowPlaying.is_playing ? "justify-around" : "justify-center animate-pulse"
+      )}
+    >
       <div className="h-20 w-20">
         <img
           src={nowPlaying.cover}

@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer className="w-full border-t bg-background">
       <div className="container flex h-full flex-col items-center justify-between py-4 md:flex-row md:space-y-0">
-        <div className="relative">
+        <div className="py-4 md:py-0">
           <SpotifyNowPlaying />
         </div>
         <div className="flex items-center md:items-start">
