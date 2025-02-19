@@ -31,8 +31,6 @@ export interface Image {
   url: string;
 }
 
-const API_URL = import.meta.env.VITE_SPOTIFY_API;
-
 export const SpotifyNowPlaying = () => {
   const [nowPlaying, setNowPlaying] = useState({
     artist: "Artist",
@@ -47,7 +45,7 @@ export const SpotifyNowPlaying = () => {
   useEffect(() => {
     const fetchNowPlaying = async () => {
       try {
-        const response = await fetch(API_URL);
+        const response = await fetch("/api");
         if (!response.ok) throw new Error("Failed to fetch");
 
         const data: ISpotify = await response.json();

@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/api",
+            "destination": "https://panntod-spotify-readme.vercel.app/api"
+        }
+    ]
+}
